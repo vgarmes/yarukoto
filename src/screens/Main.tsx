@@ -1,5 +1,15 @@
 import React from 'react'
-import { Text, Box, Center } from 'native-base'
+import {
+  Text,
+  Box,
+  Center,
+  VStack,
+  themeTools,
+  useTheme,
+  useColorMode,
+  useColorModeValue
+} from 'native-base'
+import ThemeToggle from '../components/ThemeToggle'
 
 const Main = () => {
   return (
@@ -9,9 +19,12 @@ const Main = () => {
       px={4}
       flex={1}
     >
-      <Box>
-        <Text>Hello</Text>
-      </Box>
+      <VStack space={5} alignItems="center">
+        <Box>
+          <Text>Hello</Text>
+        </Box>
+        <ThemeToggle />
+      </VStack>
     </Center>
   )
 }
