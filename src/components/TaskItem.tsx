@@ -121,6 +121,7 @@ const TaskItem = ({
             textColor={activeTextColor}
             inactiveTextColor={doneTextColor}
             strikethrough={isDone}
+            onPress={onPressLabel}
           >
             {subject}
           </AnimatedTaskLabel>
