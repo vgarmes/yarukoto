@@ -41,11 +41,12 @@ export const AnimatedTaskItem = ({
   onToggleItem,
   onChangeSubject,
   onFinishEditing,
+  onPressLabel,
   onRemove
 }: TaskItemProps) => {
   const handleToggleCheckbox = useCallback(() => {
     onToggleItem(data)
-  }, [data, onChangeSubject])
+  }, [data, onToggleItem])
   const handleChangeSubject = useCallback(
     subject => {
       onChangeSubject(data, subject)
@@ -56,8 +57,8 @@ export const AnimatedTaskItem = ({
     onFinishEditing(data)
   }, [data, onFinishEditing])
   const handlePressLabel = useCallback(() => {
-    onRemove(data)
-  }, [data, onRemove])
+    onPressLabel(data)
+  }, [data, onPressLabel])
   const handleRemove = useCallback(() => {
     onRemove(data)
   }, [data, onRemove])
