@@ -1,6 +1,8 @@
 import React from 'react'
 import { Dimensions } from 'react-native'
 import {
+  Gesture,
+  GestureDetector,
   PanGestureHandler,
   PanGestureHandlerGestureEvent,
   PanGestureHandlerProps
@@ -33,11 +35,12 @@ const SwipeView = ({
   simultaneousHandlers
 }: Props) => {
   const translateX = useSharedValue(0)
-  const panGesture = useAnimatedGestureHandler<PanGestureHandlerGestureEvent>({
-    onActive: event => {
-      translateX.value = Math.max(-128, Math.min(0, event.translationX))
-    },
-    onEnd: () => {
+  const panGesture = Gesture.Pan()
+    .onUpdate(
+      event =>
+        (translateX.value = Math.max(-128, Math.min(0, event.translationX)))
+    )
+    .onEnd(() => {
       const shouldBeMissed = translateX.value < SWIPE_TRESHOLD
       if (shouldBeMissed) {
         translateX.value = withTiming(-SCREEN_WIDTH)
@@ -45,8 +48,7 @@ const SwipeView = ({
       } else {
         translateX.value = withTiming(0)
       }
-    }
-  })
+    })
 
   const facadeStyle = useAnimatedStyle(() => ({
     transform: [
@@ -62,12 +64,9 @@ const SwipeView = ({
           {backView}
         </Box>
       )}
-      <PanGestureHandler
-        simultaneousHandlers={simultaneousHandlers}
-        onGestureEvent={panGesture}
-      >
+      <GestureDetector gesture={panGesture}>
         <StyledView style={facadeStyle}>{children}</StyledView>
-      </PanGestureHandler>
+      </GestureDetector>
     </StyledView>
   )
 }
