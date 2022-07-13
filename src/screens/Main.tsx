@@ -12,6 +12,8 @@ import AnimatedColorBox from '../components/AnimatedColorBox'
 import ThemeToggle from '../components/ThemeToggle'
 import TaskList from '../components/TaskList'
 import shortid from 'shortid'
+import Masthead from '../components/Masthead'
+import Navbar from '../components/Navbar'
 
 const initialData = [
   {
@@ -61,6 +63,12 @@ const Main = () => {
       bg={useColorModeValue('warmGray.50', 'primary.900')}
       w="full"
     >
+      <Masthead
+        title="What's up, Victor!"
+        image={require('../../assets/masthead.png')}
+      >
+        <Navbar />
+      </Masthead>
       <VStack space={5} alignItems="center" w="full">
         <TaskList
           data={data}
