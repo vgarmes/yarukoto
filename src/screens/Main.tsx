@@ -1,23 +1,16 @@
 import React, { useCallback, useState } from 'react'
-import { Pressable } from 'react-native'
 import {
-  Text,
-  Box,
   Center,
   VStack,
-  themeTools,
-  useTheme,
-  useColorMode,
   useColorModeValue,
   Fab,
-  Icon
+  Icon,
+  useColorMode
 } from 'native-base'
 import { AntDesign } from '@expo/vector-icons'
+import AnimatedColorBox from '../components/AnimatedColorBox'
 import ThemeToggle from '../components/ThemeToggle'
-import AnimatedCheckbox from '../components/AnimatedCheckbox'
-import TaskItem from '../components/TaskItem'
 import TaskList from '../components/TaskList'
-import SwipableView from '../components/SwipableView'
 import shortid from 'shortid'
 
 const initialData = [
@@ -63,10 +56,10 @@ const Main = () => {
   }, [])
 
   return (
-    <Center
-      _dark={{ bg: 'blueGray.900' }}
-      _light={{ bg: 'blueGray.50' }}
+    <AnimatedColorBox
       flex={1}
+      bg={useColorModeValue('warmGray.50', 'primary.900')}
+      w="full"
     >
       <VStack space={5} alignItems="center" w="full">
         <TaskList
@@ -93,7 +86,7 @@ const Main = () => {
           setEditingItemId(id)
         }}
       />
-    </Center>
+    </AnimatedColorBox>
   )
 }
 
