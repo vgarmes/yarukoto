@@ -71,7 +71,7 @@ const Sidebar = ({ state, navigation }: DrawerContentComponentProps) => {
           onPress={handlePressMenuAbout}
           icon="info"
         >
-          Tasks
+          About
         </MenuButton>
       </VStack>
       <Center>
