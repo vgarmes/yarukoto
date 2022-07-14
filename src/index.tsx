@@ -2,6 +2,7 @@ import React from 'react'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import Main from './screens/Main'
 import About from './screens/About'
+import Sidebar from './components/Sidebar'
 
 const Drawer = createDrawerNavigator()
 
@@ -9,6 +10,7 @@ const App = () => {
   return (
     <Drawer.Navigator
       initialRouteName="Main"
+      drawerContent={props => <Sidebar {...props} />}
       screenOptions={{
         headerShown: false,
         drawerType: 'back',
